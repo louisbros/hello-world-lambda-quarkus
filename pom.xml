@@ -10,6 +10,7 @@
 
     <modules>
         <module>hello-world-lambda-quarkus</module>
+        <module>hello-world-lambda-quarkus-infra</module>
         <module>hello-world-lambda-quarkus-acceptance</module>
     </modules>
 

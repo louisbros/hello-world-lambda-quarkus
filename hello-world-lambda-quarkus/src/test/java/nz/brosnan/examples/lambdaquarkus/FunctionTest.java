@@ -1,7 +1,6 @@
 package nz.brosnan.examples.lambdaquarkus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import io.quarkus.test.junit.QuarkusTest;
 import javax.inject.Inject;
@@ -20,6 +19,11 @@ class FunctionTest {
 
     @Test
     void testHandleRequest() {
-        assertEquals(function.handleRequest(null, null), "Output");
+        // Given
+        // When
+        Object output = function.handleRequest(null, null);
+
+        // Then
+        assertEquals(output, "Output");
     }
 }
