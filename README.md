@@ -38,7 +38,7 @@ The command will run the build for all of the project modules:
 
 The `hello-world-lambda-quarkus` will be built into a deployable lambda archive. This archive will contain the quarkus native image.
 
-Because this is binary file, it needs to be built for the environment that it will run run within, to support this the binary is created within a docker container that matches the Lambda runtime.
+Because this is binary file, it needs to be built for the environment that it will run within. To support this the binary is created within a docker container that matches the Lambda runtime.
 
 ## Deploy
 
