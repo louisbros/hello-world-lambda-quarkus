@@ -27,6 +27,8 @@ public class LambdaService {
             .payload(payload).build();
 
         return this.lambdaClientFactory.create()
-            .invoke(request).payload().asUtf8String();
+            .invoke(request)
+            .payload()
+            .asUtf8String();
     }
 }

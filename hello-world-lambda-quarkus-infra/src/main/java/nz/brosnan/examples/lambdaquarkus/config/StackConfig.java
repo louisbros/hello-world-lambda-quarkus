@@ -17,7 +17,7 @@ public class StackConfig {
     }
 
     public String getLambdaId() {
-        return Objects.requireNonNull(this.lambdaId, "Id is required");
+        return Objects.requireNonNull(this.lambdaId, "LambdaId is required");
     }
 
     public StackConfig setLambdaId(String lambdaId) {

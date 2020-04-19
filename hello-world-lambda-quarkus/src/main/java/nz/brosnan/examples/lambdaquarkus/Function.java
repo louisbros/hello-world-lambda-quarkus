@@ -14,9 +14,10 @@ public class Function implements RequestHandler<Input, Output> {
 
     @Override
     public Output handleRequest(Input input, Context context) {
-        LOGGER.info("Running");
+        LOGGER.info(String.format("Request for name: %s", input.getName()));
 
-        return new Output().setId(UUID.randomUUID().toString())
+        return new Output()
+            .setId(UUID.randomUUID().toString())
             .setMessage(String.format("Hello %s", input.getName()));
     }
 }

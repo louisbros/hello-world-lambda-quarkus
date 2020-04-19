@@ -11,7 +11,7 @@ import nz.brosnan.examples.lambdaquarkus.service.LambdaService;
 
 public class StepDefinitions {
     @Inject
-    private ResultMap<String, String> resultMap;
+    private ResultHolder<String, String> results;
     @Inject
     private LambdaService lambdaService;
 
@@ -22,11 +22,11 @@ public class StepDefinitions {
 
     @When("I call the function")
     public void i_call_the_function() {
-        this.resultMap.put("result", this.lambdaService.invoke("World"));
+        this.results.put("result", this.lambdaService.invoke("World"));
     }
 
     @Then("I should receive an output")
     public void i_should_receive_an_output() {
-        assertEquals(this.resultMap.get("result").contains("Hello World"), true);
+        assertEquals(this.results.get("result").contains("Hello World"), true);
     }
 }

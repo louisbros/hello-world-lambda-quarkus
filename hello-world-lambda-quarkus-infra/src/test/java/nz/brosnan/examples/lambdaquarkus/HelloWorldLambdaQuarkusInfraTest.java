@@ -18,16 +18,20 @@ public class HelloWorldLambdaQuarkusInfraTest {
     public void testStack() throws IOException {
         // Given
         App app = new App();
-        StackConfig config = new StackConfig().setId("test").setLambdaId("test")
-                .setLambdaArtifactPath("./src/test/resources/function");
+        StackConfig config = new StackConfig()
+            .setId("test")
+            .setLambdaId("test")
+            .setLambdaArtifactPath("./src/test/resources/function");
 
         HelloWorldLambdaQuarkusInfraStack stack = new HelloWorldLambdaQuarkusInfraStack(app, config);
 
         // When
-        JsonNode actual = JSON.valueToTree(app.synth().getStackArtifact(stack.getArtifactId()).getTemplate());
+        JsonNode actual = JSON.valueToTree(app.synth().getStackArtifact(stack.getArtifactId())
+            .getTemplate());
 
         // Then
-        JsonNode expected = JSON.readTree(this.getClass().getResourceAsStream("/stack.json"));
+        JsonNode expected = JSON.readTree(this.getClass()
+            .getResourceAsStream("/stack.json"));
 
         assertEquals(expected, actual);
     }
