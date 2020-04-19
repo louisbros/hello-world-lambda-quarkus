@@ -9,12 +9,14 @@ import software.amazon.awssdk.services.lambda.model.InvokeRequest;
 
 @ScenarioScoped
 public class LambdaService {
-
-    @Inject
     private Configuration config;
+    private LambdaClientFactory lambdaClientFactory;
 
     @Inject
-    private LambdaClientFactory lambdaClientFactory;
+    public LambdaService(Configuration config, LambdaClientFactory lambdaClientFactory) {
+        this.config = config;
+        this.lambdaClientFactory = lambdaClientFactory;
+    }
 
     public String invoke(String name) {
         SdkBytes payload = SdkBytes.fromUtf8String(String.format("{\n\"name\": \"%s\"\n}", name));
