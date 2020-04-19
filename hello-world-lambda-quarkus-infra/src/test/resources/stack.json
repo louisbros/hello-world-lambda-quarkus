@@ -86,6 +86,7 @@
                         "DISABLE_SIGNAL_HANDLERS": "true"
                     }
                 },
+                "FunctionName": "HelloWorldQuarkusLambda",
                 "Timeout": 300
             },
             "DependsOn": [

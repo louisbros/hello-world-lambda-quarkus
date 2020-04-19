@@ -6,7 +6,6 @@ import nz.brosnan.examples.lambdaquarkus.config.StackConfig;
 import software.amazon.awscdk.core.Construct;
 import software.amazon.awscdk.core.Duration;
 import software.amazon.awscdk.core.Stack;
-import software.amazon.awscdk.core.StackProps;
 import software.amazon.awscdk.services.lambda.Code;
 import software.amazon.awscdk.services.lambda.Runtime;
 import software.amazon.awscdk.services.lambda.SingletonFunction;
@@ -24,15 +23,13 @@ public class HelloWorldLambdaQuarkusInfraStack extends Stack {
         Map<String, String> environment = new HashMap<>();
         environment.put("DISABLE_SIGNAL_HANDLERS", "true");
 
-        SingletonFunction lambdaFunction =
-            SingletonFunction.Builder.create(this, "hello-world-lambda-quarkus")
-                .description("Hello World Quarkus Lambda")
-                .code(Code.fromAsset(this.config.getLambdaArtifactPath()))
-                .handler("not.used")
-                .environment(environment)
-                .timeout(Duration.seconds(300))
-                .runtime(Runtime.PROVIDED)
-                .uuid(this.config.getLambdaId())
-                .build();
+        SingletonFunction.Builder.create(this, "hello-world-lambda-quarkus")
+            .functionName("HelloWorldQuarkusLambda")
+            .description("Hello World Quarkus Lambda")
+            .code(Code.fromAsset(this.config.getLambdaArtifactPath()))
+            .handler("not.used").environment(environment)
+            .timeout(Duration.seconds(300)).runtime(Runtime.PROVIDED)
+            .uuid(this.config.getLambdaId())
+            .build();
     }
 }

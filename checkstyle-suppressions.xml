@@ -4,6 +4,6 @@
 
 <suppressions>
     <suppress checks="Indentation" files="." />
-    <suppress checks="MissingJavadocMethod" files="[\\/]hello-world-lambda-quarkus-infra[\\/]" />
+    <suppress checks="MissingJavadocMethod" files="." />
     <suppress checks="MethodName" files="[\\/]hello-world-lambda-quarkus-acceptance[\\/]" />
 </suppressions>
