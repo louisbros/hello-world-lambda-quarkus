@@ -10,6 +10,7 @@
 
     <modules>
         <module>hello-world-lambda-quarkus</module>
+        <module>hello-world-lambda-sb</module>
         <module>hello-world-lambda-quarkus-infra</module>
         <module>hello-world-lambda-quarkus-acceptance</module>
     </modules>
@@ -20,6 +21,7 @@
         <checkstyle.version>3.1.1</checkstyle.version>
         <jacoco.version>0.8.4</jacoco.version>
         <jacoco.exclude>**/*Test.*,**/*Holder.*,**/*Definitions.*,**/*Factory.*,**/*App.*</jacoco.exclude>
+        <jacoco.minimum>1.00</jacoco.minimum>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <java.version>1.8</java.version>
     </properties>
@@ -40,7 +42,7 @@
                 <version>${checkstyle.version}</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <configLocation>https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml</configLocation>
+                    <configLocation>https://raw.githubusercontent.com/checkstyle/checkstyle/checkstyle-8.29/src/main/resources/google_checks.xml</configLocation>
                     <suppressionLocation>checkstyle-suppressions.xml</suppressionLocation>
                     <suppressionFileExpression>checkstyle.suppressions.file</suppressionFileExpression>
                     <consoleOutput>true</consoleOutput>
@@ -96,7 +98,7 @@
                                         <limit>
                                             <counter>INSTRUCTION</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>1.00</minimum>
+                                            <minimum>${jacoco.minimum}</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

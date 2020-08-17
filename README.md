@@ -59,3 +59,51 @@ These tests will run against the deployed Lambda function and assume that AWS cr
 ```
 mvn clean test -Pacceptance
 ```
+
+## Test Event
+```
+{
+    "resource": "/product",
+    "path": "/product",
+    "httpMethod": "POST",
+    "requestContext": {
+        "resourcePath": "/product",
+        "httpMethod": "POST",
+        "path": "/product",
+        "identity": {}
+    },
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "application/json"
+        ],
+        "Content-Type": [
+            "application/json"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "body": "{\"name\": \"Test Product\"}",
+    "isBase64Encoded": false
+}
+```
+
+# Timing Basic Call
+
+## Cold
+| Deployment       | Memory Allocated | Memory Used | Init Duration (ms) | Duration (ms) | Cost 100k req/month |
+|------------------|------------------|-------------|--------------------|---------------|---------------------|
+| Quarkus Native   | 128              | 82          | 357.95             | 263.67        |                     |
+| Quarkus Java     | 512              | 151         | 2809.37            | 1477.68       |                     |
+| Spring Boot Java | 512              | 183         | 5471.29            | 436.57        |                     |
+
+## Warm
+|------------------|------------------|-------------|--------------------|---------------|---------------------|
+| Quarkus Native   | 128              | 82          | 0                  | 1.62          |                     |
+| Quarkus Java     | 512              | 152         | 0                  | 4.27          |                     |
+| Spring Boot Java | 512              | 183         | 0                  | 3.71          |                     |
